@@ -1,0 +1,31 @@
+root   ::= map
+value  ::= map | vector | string | number | uuid | keyword | ("true" | "false" | "nil") ws
+
+map ::=
+  "{" ws (
+            keyword ws value
+    (","? ws keyword ws value)*
+  )? "}" ws
+
+keyword ::= 
+  ":" [a-zA-Z-] [a-zA-Z-]*
+
+
+vector  ::=
+  "[" ws (
+            value
+    (","? ws value)*
+  )? "]" ws
+
+string ::=
+  "\"" (
+    [^"\\] |
+    "\\" (["\\/bfnrt] | "u" [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F]) # escapes
+  )* "\"" ws
+
+number ::= ("-"? ([0-9] | [1-9] [0-9]*)) ("." [0-9]+)? ([eE] [-+]? [0-9]+)? ws
+
+uuid ::= "#uuid \"" [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] "-" [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] "-" [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] "-" [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] "-" [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] [0-9a-f] "\""
+
+# Optional space: by convention, applied in this grammar after literal chars when allowed
+ws ::= ([ \t\n] )?

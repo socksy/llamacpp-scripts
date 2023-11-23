@@ -1,0 +1,4 @@
+# if you install nix-direnv (see https://github.com/nix-community/nix-direnv)
+# then when you cd into this directory you'll instantly get access to llama
+nix_direnv_watch_file flake.nix
+use flake --no-update-lock-file
