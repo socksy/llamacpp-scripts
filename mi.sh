@@ -30,7 +30,7 @@ rlwrap --always-readline -N\
   llama -m $MODEL \
   --mlock \
   -c 4096 \
-  --n-gpu-layers 1 \
+  --n-gpu-layers 30 \
   --threads 8 \
   -n 512 \
   -i \

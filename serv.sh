@@ -29,7 +29,9 @@ fi
 rlwrap --always-readline -N\
   llama-server -m $MODEL \
   --mlock \
-  -c 4096 \
-  --n-gpu-layers 1 \
-  --threads 8
+  -c 8192 \
+  --n-gpu-layers 32 \
+  --threads 8 \
+  --slots 8 \
+  --rope-scaling yarn \
   "${@:2}"

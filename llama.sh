@@ -3,7 +3,7 @@ set -euo pipefail && cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # usage: ./llama.sh <MODEL_FILE> <PROMPT_FILE> <any extra arguments>
 
-MODEL=${1-"models/codellama-7b-instruct.Q4_K_S.gguf"}
+MODEL=${1-"models/llama-2-7b-chat.Q4_0.gguf"}
 PROMPT_FILE="${2-}"
 EXTRA_ARGS="${@:3}"
 
